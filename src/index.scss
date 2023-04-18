@@ -1,0 +1,144 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.chat-page-container {
+  width: 98vw;
+  height: 95vh;
+  display: flex;
+  gap: 1%;
+  border: 2px solid yellow;
+
+  .personality-container {
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    padding: 1%;
+
+    .personality-buttons {
+      display: flex;
+      gap: 1%;
+    }
+  }
+
+  .chat-container {
+    background-color: lightcoral;
+    width: 50%;
+    padding: 1%;
+    border-radius: 10px;
+
+    .conversation {
+      display: flex;
+      flex-direction: column;
+
+      .gpt,
+      .user {
+        display: flex;
+        border-radius: 8px;
+        padding: 1%;
+      }
+
+      .user {
+        justify-content: flex-end;
+        margin: 1% 0 0 30%;
+        border: 1px solid red;
+      }
+
+      .gpt {
+        justify-content: flex-start;
+        margin: 1% 30% 0 0;
+        border: 1px solid blue;
+      }
+    }
+
+    .new-chat {
+      position: relative;
+
+      textarea {
+        width: 98%;
+        height: 10vh;
+        max-height: 50px;
+        min-height: 20px;
+        margin: 3% 0;
+        border-radius: 8px;
+        resize: none;
+      }
+
+      button {
+        position: absolute;
+        right: 0;
+        bottom: 20%;
+        padding: 5px;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
