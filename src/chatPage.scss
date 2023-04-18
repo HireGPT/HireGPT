@@ -1,9 +1,9 @@
 .chat-page-container {
-  width: 98vw;
-  height: 95vh;
+  width: 80vw;
+  height: 90vh;
   display: flex;
   gap: 1%;
-  border: 2px solid yellow;
+  margin: 0 9vw;
 
   .personality-container {
     background-color: lightblue;
@@ -12,6 +12,7 @@
     justify-content: space-between;
     width: 50%;
     padding: 1%;
+    border-radius: 20px;
 
     .personality-buttons {
       display: flex;
@@ -20,54 +21,69 @@
   }
 
   .chat-container {
-    background-color: lightcoral;
+    background-color: #dfdfdf;
     width: 50%;
     padding: 1%;
-    border-radius: 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     .conversation {
       display: flex;
       flex-direction: column;
+      overflow-y: auto;
+      border-radius: 20px;
 
       .gpt,
       .user {
         display: flex;
-        border-radius: 8px;
-        padding: 1%;
+        border-radius: 20px;
+        padding: 2%;
+        max-width: 70%;
+        margin: 1% 0;
       }
 
       .user {
-        justify-content: flex-end;
-        margin: 1% 0 0 30%;
-        border: 1px solid red;
+        // justify-content: flex-end;
+        align-self: flex-end;
+        background-color: #1788df;
+        color: #fff;
       }
 
       .gpt {
-        justify-content: flex-start;
-        margin: 1% 30% 0 0;
-        border: 1px solid blue;
+        // justify-content: flex-start;
+        background-color: #fdfdfd;
       }
     }
 
     .new-chat {
       position: relative;
+      margin: 3% 0;
 
       textarea {
         width: 98%;
         height: 10vh;
         max-height: 50px;
         min-height: 20px;
-        margin: 3% 0;
-        border-radius: 8px;
+        border-radius: 10px;
         resize: none;
       }
 
-      button {
+      #send-msg-button {
         position: absolute;
-        right: 0;
-        bottom: 20%;
+        right: 1.2%;
+        bottom: 6%;
         padding: 5px;
         background-color: transparent;
+        transition: none;
+      }
+
+      #send-msg-button:focus,
+      #send-msg-button:focus-visible,
+      #send-msg-button:hover {
+        border: 0;
+        outline: none;
       }
     }
   }
