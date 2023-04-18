@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 interface PersonProps {
   name: string;
@@ -64,6 +65,7 @@ const PersonPopup: React.FC<{
 };
 
 const HomePage: React.FC = () => {
+  const navigate = useNavigate();
   const [persons] = useState<Array<PersonProps>>([
     {
       name: 'Phil Troutman',
@@ -85,8 +87,24 @@ const HomePage: React.FC = () => {
     setSelectedPerson(null);
   };
 
+  const handleLogout = async () => {
+    try {
+      // Send a request to the server to log out the user
+      // await axios.post('/logout');
+      
+      // Navigate back to the sign-in page
+      navigate('/login');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
   return (
     <div>
+      <div>
+        <button onClick={handleLogout}>Log Out</button>
+      </div>
+      <div>
       <div id="instructions-panel">
         <h2>Instructions</h2>
         <p>Click on a personality to start an interview</p>
@@ -105,6 +123,7 @@ const HomePage: React.FC = () => {
         ))}
       </div>
       <PersonPopup person={selectedPerson} onClose={closePopup} />
+      </div>
     </div>
   );
 };

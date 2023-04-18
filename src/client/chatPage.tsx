@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PersonPopup from './mainPage';
+import '../chatPage.scss';
 
 const Conversation: React.FC = () => {
   const sampleData = [

@@ -1,0 +1,74 @@
+.chat-page-container {
+  width: 98vw;
+  height: 95vh;
+  display: flex;
+  gap: 1%;
+  border: 2px solid yellow;
+
+  .personality-container {
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    padding: 1%;
+
+    .personality-buttons {
+      display: flex;
+      gap: 1%;
+    }
+  }
+
+  .chat-container {
+    background-color: lightcoral;
+    width: 50%;
+    padding: 1%;
+    border-radius: 10px;
+
+    .conversation {
+      display: flex;
+      flex-direction: column;
+
+      .gpt,
+      .user {
+        display: flex;
+        border-radius: 8px;
+        padding: 1%;
+      }
+
+      .user {
+        justify-content: flex-end;
+        margin: 1% 0 0 30%;
+        border: 1px solid red;
+      }
+
+      .gpt {
+        justify-content: flex-start;
+        margin: 1% 30% 0 0;
+        border: 1px solid blue;
+      }
+    }
+
+    .new-chat {
+      position: relative;
+
+      textarea {
+        width: 98%;
+        height: 10vh;
+        max-height: 50px;
+        min-height: 20px;
+        margin: 3% 0;
+        border-radius: 8px;
+        resize: none;
+      }
+
+      button {
+        position: absolute;
+        right: 0;
+        bottom: 20%;
+        padding: 5px;
+        background-color: transparent;
+      }
+    }
+  }
+}
