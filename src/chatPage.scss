@@ -1,0 +1,90 @@
+.chat-page-container {
+  width: 80vw;
+  height: 90vh;
+  display: flex;
+  gap: 1%;
+  margin: 0 9vw;
+
+  .personality-container {
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    padding: 1%;
+    border-radius: 20px;
+
+    .personality-buttons {
+      display: flex;
+      gap: 1%;
+    }
+  }
+
+  .chat-container {
+    background-color: #dfdfdf;
+    width: 50%;
+    padding: 1%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .conversation {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      border-radius: 20px;
+
+      .gpt,
+      .user {
+        display: flex;
+        border-radius: 20px;
+        padding: 2%;
+        max-width: 70%;
+        margin: 1% 0;
+      }
+
+      .user {
+        // justify-content: flex-end;
+        align-self: flex-end;
+        background-color: #1788df;
+        color: #fff;
+      }
+
+      .gpt {
+        // justify-content: flex-start;
+        background-color: #fdfdfd;
+      }
+    }
+
+    .new-chat {
+      position: relative;
+      margin: 3% 0;
+
+      textarea {
+        width: 98%;
+        height: 10vh;
+        max-height: 50px;
+        min-height: 20px;
+        border-radius: 10px;
+        resize: none;
+      }
+
+      #send-msg-button {
+        position: absolute;
+        right: 1.2%;
+        bottom: 6%;
+        padding: 5px;
+        background-color: transparent;
+        transition: none;
+      }
+
+      #send-msg-button:focus,
+      #send-msg-button:focus-visible,
+      #send-msg-button:hover {
+        border: 0;
+        outline: none;
+      }
+    }
+  }
+}
