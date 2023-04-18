@@ -77,7 +77,7 @@ const HomePage: React.FC = () => {
       // await axios.post('/logout');
       
       // Navigate back to the sign-in page
-      navigate('/signin');
+      navigate('/login');
     } catch (error) {
       console.error('Error logging out:', error);
     }
