@@ -17,15 +17,3 @@ module.exports = {
     return pool.query(text, params, callback);
   },
 };
-
-CREATE TABLE events (
-	id SERIAL PRIMARY KEY,
-	name text not null,
-	description text null,
-	date timestamp with time zone not null,
-	loc_name text not null,
-	organizer_id INTEGER REFERENCES users (id),
-	lat INTEGER NULL,
-	lng INTEGER NULL,
-	address CHARACTER VARYING (500)
-)
