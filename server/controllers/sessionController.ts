@@ -9,9 +9,6 @@ sessionController.signUp = async (req, res, next) => {
     const find = `SELECT email FROM users
                     WHERE email = ${email}`
 
-    try {
-        await query(find, (err, result) => {})
-    }
 
     const insert = `INSERT INTO users (${email}, ${pw})
     VALUES (email, pw)`
