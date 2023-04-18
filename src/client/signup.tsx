@@ -41,7 +41,7 @@ const Signup = () => {
       </form>
       <div>
         <button type="submit">Sign Up</button>
-        <button onClick={() => navigate('/signin')}>Sign In</button>
+        <button onClick={() => navigate('/login')}>Login</button>
       </div>
     </div>
   );
