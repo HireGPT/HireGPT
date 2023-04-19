@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES6",
     "useDefineForClassFields": true,
     "lib": [
       "DOM",
       "DOM.Iterable",
-      "ESNext"
+      "ES6"
     ],
     "allowJs": false,
     "skipLibCheck": true,
@@ -18,7 +18,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "noImplicitAny": false
   },
   "include": [
     "src"
@@ -30,6 +31,8 @@
   ],
   "ts-node": {
     "esm": true,
-    "experimentalSpecifierResolution": true
+    "experimentalSpecifierResolution": "node"
   }
 }
+
+
