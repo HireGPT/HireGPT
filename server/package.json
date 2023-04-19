@@ -3,11 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "main": "./server/server.ts",
-  "type": "module",
   "scripts": {
-    "start-client": "vite --config tsconfig.json",
-    "start-server": "cd server && npm start",
-    "start": "concurrently \"npm run start-client\" \"npm run start-server\""
+    "start": "nodemon --exec ts-node -r tsconfig-paths/register --project ../tsconfig.server.json server.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -42,9 +39,7 @@
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
-    "concurrently": "^8.0.1",
     "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.2.0",
     "typescript": "^4.9.3",
     "vite": "^4.2.0"
   }
