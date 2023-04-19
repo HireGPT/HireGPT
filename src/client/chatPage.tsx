@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Person from './person';
 import './chatPage.scss';
 import { useNavigate } from 'react-router-dom';
 import { PersonContext, PersonProps } from '../PersonContext';
 import Navbar from './navbar';
+import PersonPopup from './personPopup';
 
-const Conversation: React.FC = () => {
+interface ChatMessage {
+  sender: string;
+  message: string;
+}
+
+interface ConversationProps {
+  conversationData: ChatMessage[];
+}
+
+const Conversation: React.FC<ConversationProps> = (props) => {
   const sampleData = [
     {
       sender: 'gpt',
@@ -52,48 +62,80 @@ const Conversation: React.FC = () => {
   ];
 
   // const data = await fetch('/api/chat', {message: });
-
-  const chatContent = [];
-  for (let msg of sampleData) {
-    chatContent.push(<div className={msg.sender}>{msg.message}</div>);
+  const chatContent: JSX.Element[] = [];
+  if (props.conversationData.length) {
+    for (let msg of props.conversationData) {
+      chatContent.push(<div className={msg.sender}>{msg.message}</div>);
+    }
   }
   return <div className="conversation">{chatContent}</div>;
 };
 
-const NewChat: React.FC = () => {
+const NewChat: React.FC<ConversationProps> = (props) => {
+  const handleSendMessageClick = async () => {
+    const data = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(props.conversationData),
+    });
+
+    const response = await data.json();
+    setConversationData([
+      ...props.conversationData,
+      { sender: 'assistant', message: response.message },
+    ]);
+  };
+
   return (
     <div className="new-chat-container">
       <div className="new-chat">
         <textarea />
-        <button id="send-msg-button">→</button>
+        <button id="send-msg-button" onClick={handleSendMessageClick}>
+          →
+        </button>
       </div>
       <button id="end-interview-btn">End Interview</button>
     </div>
   );
 };
 
-const ChatContainer: React.FC = () => {
+const ChatContainer: React.FC<ConversationProps> = (props) => {
+  console.log('chat container', props.conversationData);
   return (
     <div className="chat-container">
-      <Conversation />
-      <NewChat />
+      <Conversation conversationData={props.conversationData} />
+      <NewChat conversationData={props.conversationData} />
     </div>
   );
 };
 
 const ChatPage: React.FC = () => {
   const navigate = useNavigate();
-  const [conversationData, setConversationData] = useState([]);
+  const [conversationData, setConversationData] = useState<ChatMessage[]>([
+    { sender: 'user', message: 'test' },
+  ]);
+  const personContext = useContext(PersonContext);
 
   const handleChangePersonClick = () => {
+    if (personContext) {
+      personContext.setPerson(null);
+    }
     navigate('/');
   };
 
   const handleStartInterviewClick = async () => {
-    // const data = await fetch ('/api/chat',
-    // method: 'POST',
-    // headers: { 'Content-Type': 'application/json' },
-    // body: JSON.stringify( )
+    console.log(conversationData);
+    const data = await fetch('/api/initialMessage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ person: personContext }),
+    });
+
+    const response = await data.json();
+    setConversationData([
+      ...conversationData,
+      { sender: 'assistant', message: response.message },
+    ]);
   };
 
   return (
@@ -101,8 +143,13 @@ const ChatPage: React.FC = () => {
       <Navbar />
       <div className="chat-page-container">
         <div className="personality-container">
-          {/* <Person /> */}
-          <div>{'person'}</div>
+          <div className="selected-personality">
+            <h1>Interviewing with:</h1>
+            <PersonPopup
+              person={personContext?.person ?? null}
+              onClose={() => {}}
+            />
+          </div>
           <div className="personality-buttons">
             <button
               className="button-deemphasize"
@@ -115,12 +162,10 @@ const ChatPage: React.FC = () => {
             </button>
           </div>
         </div>
-        <ChatContainer />
+        <ChatContainer conversationData={conversationData} />
       </div>
     </>
   );
 };
-
-// use navigate
 
 export default ChatPage;

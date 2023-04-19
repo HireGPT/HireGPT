@@ -28,7 +28,7 @@ const PersonPopup: React.FC<PersonPopupProps> = ({ person, onClose }) => {
         <p>Company: {person.company}</p>
         <div className="popup-buttons">
           <button onClick={handleStartButtonClick}>Start</button>
-          <button className=" button-deemphasize" onClick={onClose}>
+          <button className="button-deemphasize" onClick={onClose}>
             Close
           </button>
         </div>
