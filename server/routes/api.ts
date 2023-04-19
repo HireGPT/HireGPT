@@ -33,7 +33,8 @@ router.get('/loggedIn', sessionController.isLoggedIn, (req, res) => {
   res.json({ message: 'you are logged in' })
 })
 
-router.post('/chat', chatController.chat, (req, res) => {});
+router.post('/chat', chatController.chat);
+router.post('/initialMessage', chatController.initialMessage);
 
 router.get('/personality', personalityController.getPersonalities, (req, res) => {
   res.status(200).json(res.locals.personalities);
