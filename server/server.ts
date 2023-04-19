@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
-import { ServerError } from '../types';
+import { ServerError } from './types/types'
 import session from 'express-session';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';

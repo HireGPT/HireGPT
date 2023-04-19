@@ -10,7 +10,7 @@ const Signup = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const response = await axios.post('', { email, password });
+      const response = await axios.post('/api/signup', { email, password });
       console.log(response.data);
       navigate('/'); // Redirect to home page after successful sign-up
     } catch (error) {
