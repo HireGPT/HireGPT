@@ -1,0 +1,21 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // background-color: #333;
+  margin: 10px 3.1%;
+}
+
+.navbar-logo img {
+  cursor: pointer;
+  max-width: 70px;
+}
+
+.navbar-logout {
+  // background-color: #444;
+  // color: white;
+  // border: none;
+  // padding: 5px;
+  // margin: 5px;
+  cursor: pointer;
+}

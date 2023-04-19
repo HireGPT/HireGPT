@@ -1,5 +1,5 @@
-import React from "react";
-import { PersonProps } from "../PersonContext";
+import React from 'react';
+import { PersonProps } from '../PersonContext';
 
 const Person: React.FC<PersonProps & { onClick: () => void }> = ({
   name,
@@ -11,8 +11,8 @@ const Person: React.FC<PersonProps & { onClick: () => void }> = ({
 }) => {
   return (
     <div onClick={onClick}>
-      <h3>{name}</h3>
-      <h5>{[role, company].join(", ")}</h5>
+      <h2>{name}</h2>
+      <h3>{[role, company].join(', ')}</h3>
     </div>
   );
 };

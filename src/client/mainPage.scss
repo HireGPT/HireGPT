@@ -1,0 +1,42 @@
+.main-container {
+  width: 96%; // 100-2% padding
+  height: 84%;
+  padding: 0 2% 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2%;
+
+  .instructions-panel {
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    border-radius: 20px;
+    background-color: #1788df55;
+  }
+
+  .recent-history {
+    padding: 1%;
+    border-radius: 20px;
+    background-color: #1788df55;
+  }
+
+  .personality-container {
+    padding: 1%;
+    border-radius: 20px;
+    background-color: #1788df55;
+    position: relative;
+
+    .personalities {
+      display: flex;
+      justify-content: flex-start;
+
+      .personality {
+        padding: 1%;
+        margin: 1%;
+        border-radius: 20px;
+        background-color: #dfdfdfd2;
+      }
+    }
+  }
+}

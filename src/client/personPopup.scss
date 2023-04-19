@@ -1,0 +1,21 @@
+.person-popup-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  // width: 100%;
+  // height: 100%;
+  background-color: #1788df;
+  border-radius: 20px;
+  padding: 2%;
+
+  .person-popup-content {
+    // margin: 50px;
+    // padding: 20px;
+
+    .popup-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2%;
+    }
+  }
+}
