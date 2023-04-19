@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './navbar.scss';
 import logo from '../assets/hire-gpt-logo.png';
+import axios from 'axios';
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Navbar: React.FC = () => {
   const handleLogout = async () => {
     try {
       // Send a request to the server to log out the user
-      // await axios.post('/logout');
+      await axios.post('/api/logout');
 
       // Navigate back to the sign-in page
       navigate('/login');

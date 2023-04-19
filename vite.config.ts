@@ -10,4 +10,9 @@ export default defineConfig({
     }
   },
   plugins: [react()],
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+  },
+  
 });
+console.log('Using Vite configuration...');
