@@ -5,9 +5,10 @@
   "main": "./server/server.ts",
   "type": "module",
   "scripts": {
-    "start-client": "vite --config vite.config.ts --port 8080",
+    "start-client": "vite --config vite.config.ts --port 5555",
     "start-server": "cd server && npm start",
-    "start": "concurrently \"npm run start-client\" \"npm run start-server\""
+    "start": "concurrently \"npm run start-client\" \"npm run start-server\"",
+    "test": "jest --verbose"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -45,6 +46,7 @@
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
     "concurrently": "^8.0.1",
+    "supertest": "^6.3.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^4.9.3",
