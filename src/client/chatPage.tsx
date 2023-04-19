@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import PersonPopup from './mainPage';
-import '../chatPage.scss';
+import Person from './person';
+import './chatPage.scss';
+import { useNavigate } from 'react-router-dom';
+import { PersonContext, PersonProps } from '../PersonContext';
+import Navbar from './navbar';
 
 const Conversation: React.FC = () => {
   const sampleData = [
@@ -57,9 +60,12 @@ const Conversation: React.FC = () => {
 
 const NewChat: React.FC = () => {
   return (
-    <div className="new-chat">
-      <textarea />
-      <button id="send-msg-button">→</button>
+    <div className="new-chat-container">
+      <div className="new-chat">
+        <textarea />
+        <button id="send-msg-button">→</button>
+      </div>
+      <button id="end-interview-btn">End Interview</button>
     </div>
   );
 };
@@ -69,23 +75,34 @@ const ChatContainer: React.FC = () => {
     <div className="chat-container">
       <Conversation />
       <NewChat />
-      <button>End Interview</button>
     </div>
   );
 };
 
 const ChatPage: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleChangePersonClick = () => {
+    navigate('/');
+  };
+
   return (
-    <div className="chat-page-container">
-      <div className="personality-container">
-        {'Current personality placeholder'}
-        <div className="personality-buttons">
-          <button>{'Change personality'}</button>
-          <button>{'Start chat'}</button>
+    <>
+      <Navbar />
+      <div className="chat-page-container">
+        <div className="personality-container">
+          {/* <Person /> */}
+          <div>{'person'}</div>
+          <div className="personality-buttons">
+            <button onClick={handleChangePersonClick}>
+              {'Change Personality'}
+            </button>
+            <button>{'Start Interview'}</button>
+          </div>
         </div>
+        <ChatContainer />
       </div>
-      <ChatContainer />
-    </div>
+    </>
   );
 };
 

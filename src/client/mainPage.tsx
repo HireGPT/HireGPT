@@ -5,6 +5,7 @@ import PersonPopup from './personPopup';
 import Person from './person';
 import Navbar from './navbar';
 import axios from 'axios';
+import './mainPage.scss';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -45,32 +46,34 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
       <Navbar />
-      <div>
-        <div id="instructions-panel">
-          <h2>Instructions</h2>
-          <p>Click on a personality to start an interview</p>
+      <div className="main-container">
+        <div>
+          <div className="instructions-panel">
+            <h1>Instructions</h1>
+            <p>Click on a personality to start an interview</p>
+          </div>
+          <div id="recent-history">
+            <h1>Recent History</h1>
+          </div>
+          <div id="persons">
+            <h1>Personalities</h1>
+            {persons.map((person, index) => (
+              <Person
+                key={index}
+                {...person}
+                onClick={() => handlePersonClick(person)}
+              />
+            ))}
+          </div>
+          <PersonPopup
+            person={personContext?.person ?? null}
+            onClose={closePopup}
+          />
         </div>
-        <div id="recent-history">
-          <h2>Recent History</h2>
-        </div>
-        <div id="persons">
-          <h2>Personalities</h2>
-          {persons.map((person, index) => (
-            <Person
-              key={index}
-              {...person}
-              onClick={() => handlePersonClick(person)}
-            />
-          ))}
-        </div>
-        <PersonPopup
-          person={personContext?.person ?? null}
-          onClose={closePopup}
-        />
       </div>
-    </div>
+    </>
   );
 };
 

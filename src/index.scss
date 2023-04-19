@@ -14,6 +14,13 @@
   -webkit-text-size-adjust: 100%;
 }
 
+#root {
+  height: 100vh;
+  width: 100vw;
+  background: #ffffff;
+  background: linear-gradient(128deg, #1788dfa3 0%, #fdfdfd 100%);
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -39,7 +46,7 @@ h1 {
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.4em 0.8em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -64,6 +71,6 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #fdfdfd;
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../navbar.scss';
-import logo from '../assets/chatbot-logo.jpg';
+import './navbar.scss';
+import logo from '../assets/hire-gpt-logo.png';
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();

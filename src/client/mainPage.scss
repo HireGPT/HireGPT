@@ -1,0 +1,20 @@
+h1 {
+  font-size: 1.4em;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+.main-container {
+  width: 96%; // 100-2% padding
+  height: 84%;
+  padding: 0 2% 2%;
+  display: flex;
+  justify-content: center;
+  gap: 2%;
+
+  .instructions-panel {
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+  }
+}
