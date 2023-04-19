@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../navbar.scss';
-import logo from '../assets/chatbot-logo.jpg';
+import './navbar.scss';
+import logo from '../assets/hire-gpt-logo.png';
 import axios from 'axios';
 
 const Navbar: React.FC = () => {
@@ -28,7 +28,10 @@ const Navbar: React.FC = () => {
       <div className="navbar-logo" onClick={handleLogoClick}>
         <img src={logo} alt="Logo" />
       </div>
-      <button className="navbar-logout" onClick={handleLogout}>
+      <button
+        className="navbar-logout button-deemphasize"
+        onClick={handleLogout}
+      >
         Log Out
       </button>
     </header>

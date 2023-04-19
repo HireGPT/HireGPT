@@ -1,0 +1,127 @@
+.chat-page-container {
+  width: 96%; // 100-2% padding
+  height: 84%;
+  padding: 0 2% 2%;
+  display: flex;
+  justify-content: center;
+  gap: 2%;
+  // margin: 0 9vw;
+
+  .personality-container {
+    background-color: #1788df55;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 45%;
+    padding: 1%;
+    border-radius: 20px;
+
+    .personality-buttons {
+      display: flex;
+      gap: 1%;
+      justify-content: center;
+    }
+  }
+
+  .chat-container {
+    background-color: #dfdfdfd2;
+    width: 45%;
+    padding: 2%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .conversation {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+
+      .gpt,
+      .user {
+        display: flex;
+        border-radius: 20px;
+        padding: 2%;
+        max-width: 70%;
+        margin: 1% 0;
+      }
+
+      .user {
+        // justify-content: flex-end;
+        align-self: flex-end;
+        background-color: #1788df;
+        color: #fff;
+      }
+
+      .gpt {
+        // justify-content: flex-start;
+        background-color: #fdfdfd;
+      }
+    }
+
+    .new-chat-container {
+      display: flex;
+      flex-direction: column;
+
+      .new-chat {
+        position: relative;
+        margin: 2% 0 0;
+
+        textarea {
+          width: 96%;
+          height: 10vh;
+          max-height: 50px;
+          min-height: 20px;
+          line-height: 20px;
+          border-radius: 20px;
+          resize: none;
+          font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+          font-size: 18px;
+          padding: 8px;
+        }
+
+        #send-msg-button {
+          position: absolute;
+          right: 1%;
+          bottom: 8%;
+          padding: 5px;
+          background-color: transparent;
+          transition: none;
+        }
+
+        #send-msg-button:focus,
+        #send-msg-button:focus-visible,
+        #send-msg-button:hover {
+          border: 0;
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .chat-page-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+
+    .personality-container {
+      width: 98%;
+    }
+
+    .chat-container {
+      width: 96%;
+      position: relative;
+      overflow-y: auto;
+
+      .new-chat-container {
+        .new-chat {
+          textarea {
+            width: 98%;
+          }
+        }
+      }
+    }
+  }
+}
