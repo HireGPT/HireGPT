@@ -28,11 +28,11 @@ const userController: UserController = {
       if (existingEmailResult.rowCount === 0) {
         // Salt password here
         const hashedPassword = await bcrypt.hash(password, SALT_WORK_FACTOR);
-        
+
         const insertParams = [email, hashedPassword];
         const insert = `INSERT INTO users (email, password)
             VALUES ($1, $2) RETURNING *`;
-            
+
         const result = await db.query(insert, insertParams);
         res.locals.users = result.rows[0];
         return next();
@@ -87,7 +87,8 @@ const userController: UserController = {
           err: 'invalid email'
         }
       })
-    } catch (error) {
+    } catch (error: any) {
+      console.log('userController.verifyUser error:', error.message);
       return next(error)
     }
   },

@@ -16,48 +16,48 @@ dotenv.config();
 app.use(express.json());
 
 app.use(
-  express.urlencoded({
-    extended: true,
-  })
+    express.urlencoded({
+        extended: true,
+    })
 );
 
 app.use(
-  session({
-    secret: process.env.SECRET!,
-    resave: false,
-    saveUninitialized: true,
-    name: 'sessionID',
-    cookie: {
-      secure: false,
-      maxAge: ONE_DAY,
-      sameSite: 'lax'
-    },
-  })
+    session({
+        secret: process.env.SECRET!,
+        resave: false,
+        saveUninitialized: true,
+        name: 'sessionID',
+        cookie: {
+            secure: false,
+            maxAge: ONE_DAY,
+            sameSite: 'lax'
+        },
+    })
 );
 
 app.use(cookieParser());
 
 app.use((req, res, next) => {
-  console.log(`Received request: ${req.method} ${req.path}`);
-  next();
+    console.log(`Received request: ${req.method} ${req.path}`);
+    next();
 });
 
 app.use('/api', router);
 
 // Global Error Handler
 app.use(
-  (error: ServerError, req: Request, res: Response, next: NextFunction) => {
-    const defaultErr = {
-      log: 'Express error handler caught unknown middleware error',
-      status: 500,
-      message: { err: 'An error occured' },
-    };
-    const errorObj = Object.assign({}, defaultErr, error);
-    console.log(errorObj.log);
-    return res.status(errorObj.status).json(errorObj.message);
-  }
+    (error: ServerError, req: Request, res: Response, next: NextFunction) => {
+        const defaultErr = {
+            log: 'Express error handler caught unknown middleware error',
+            status: 500,
+            message: { err: 'An error occured' },
+        };
+        const errorObj = Object.assign({}, defaultErr, error);
+        console.log(errorObj.log);
+        return res.status(errorObj.status).json(errorObj.message);
+    }
 );
 
 app.listen(PORT, () => {
-  console.log(`Server listening on port: ${PORT}`);
+    console.log(`Server listening on port: ${PORT}`);
 });

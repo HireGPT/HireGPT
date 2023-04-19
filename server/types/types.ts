@@ -16,11 +16,14 @@ declare module 'express-session' {
   }
 }
 
-
 export interface PersonProps {
   name: string;
   traits: string;
   role: string;
   expertise: string;
   company: string;
+}
+
+export interface PersonalityProps extends PersonProps {
+  interests: string;
 }
