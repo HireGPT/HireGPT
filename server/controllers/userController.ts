@@ -18,21 +18,20 @@ interface UserController {
 
 const userController: UserController = {
   signUp: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    const { email, pw } = req.body;
+    const { email, password } = req.body;
 
     const findParams: string[] = [email];
-    const find = `SELECT email FROM users
-                            WHERE email = $1`;
+    const find = `SELECT email FROM users WHERE email = $1`;
 
     try {
       const existingEmailResult = await db.query(find, findParams);
       if (existingEmailResult.rowCount === 0) {
-        // salt password here 
-        const hashedPassword = await bcrypt.hash(pw, SALT_WORK_FACTOR);
+        // Salt password here
+        const hashedPassword = await bcrypt.hash(password, SALT_WORK_FACTOR);
         
         const insertParams = [email, hashedPassword];
         const insert = `INSERT INTO users (email, password)
-            VALUES ($1, $2)`;
+            VALUES ($1, $2) RETURNING *`;
             
         const result = await db.query(insert, insertParams);
         res.locals.users = result.rows[0];
@@ -40,18 +39,26 @@ const userController: UserController = {
       } else {
         return next({
           log: 'userController.signUp',
+          status: 400,
           message: {
             err: 'email is already in use'
           }
-        })
+        });
       }
     } catch (error) {
-      return next('Error getting signing up');
+      console.error('Error in signUp:', error);
+      return next({
+        log: 'userController.signUp',
+        status: 500,
+        message: {
+          err: 'Error signing up'
+        }
+      });
     }
   },
 
   verifyUser: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    const { email, pw } = req.body;
+    const { email, password } = req.body;
 
     const findParams = [email];
     const find = `SELECT email, password FROM users WHERE email = $1`;
@@ -60,7 +67,7 @@ const userController: UserController = {
       const userResult = await db.query(find, findParams);
       if (userResult.rowCount > 0) {
         const storedPassword = userResult.rows[0].password;
-        const isPasswordCorrect = await bcrypt.compare(pw, storedPassword);
+        const isPasswordCorrect = await bcrypt.compare(password, storedPassword);
 
         if (isPasswordCorrect) {
           res.locals.users = userResult.rows[0];

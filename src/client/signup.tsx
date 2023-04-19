@@ -11,7 +11,7 @@ const Signup = () => {
     event.preventDefault();
     try {
       const response = await axios.post('/api/signup', { email, password });
-      console.log(response.data);
+      // console.log(response.data);
       navigate('/'); // Redirect to home page after successful sign-up
     } catch (error) {
       console.error(error);
@@ -38,11 +38,11 @@ const Signup = () => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-      </form>
       <div>
         <button type="submit">Sign Up</button>
         <button onClick={() => navigate('/login')}>Login</button>
       </div>
+      </form>
     </div>
   );
 };

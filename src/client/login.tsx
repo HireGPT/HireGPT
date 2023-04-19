@@ -10,8 +10,8 @@ const Login = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const response = await axios.post('', { email, password });
-      console.log(response.data);
+      const response = await axios.post('/api/login', { email, password });
+      // console.log(response.data);
       navigate('/'); // Redirect to homepage after successful sign-in
     } catch (error) {
       console.error(error);
@@ -38,11 +38,11 @@ const Login = () => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-      </form>
       <div>
         <button type="submit">Sign In</button>
         <button onClick={() => navigate('/signup')}>Sign Up</button>
       </div>
+      </form>
     </div>
   );
 };

@@ -9,8 +9,9 @@ require('dotenv').config();
 
 const router = express.Router();
 
-router.post('/login', 
+router.post('/login',
     userController.verifyUser, 
+    sessionController.startSession,
     (req: Request, res: Response): Response => {
     return res.status(200).json(res.locals.users);
     });
@@ -18,6 +19,7 @@ router.post('/login',
 router.post(
   '/signup',
   userController.signUp,
+  sessionController.startSession,
   (req: Request, res: Response): Response => {
     return res.status(200).json();
   }
@@ -32,5 +34,6 @@ router.get('/loggedIn', sessionController.isLoggedIn, (req, res) => {
 })
 
 router.post('/chat', chatController)
+
 
 export default router;

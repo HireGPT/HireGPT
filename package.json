@@ -5,7 +5,7 @@
   "main": "./server/server.ts",
   "type": "module",
   "scripts": {
-    "start-client": "vite --config tsconfig.json --port 8080",
+    "start-client": "vite --config vite.config.ts --port 8080",
     "start-server": "cd server && npm start",
     "start": "concurrently \"npm run start-client\" \"npm run start-server\""
   },

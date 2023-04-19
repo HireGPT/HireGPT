@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
   const handleLogout = async () => {
     try {
       // Send a request to the server to log out the user
-      await axios.post('/logout');
+      await axios.post('/api/logout');
 
       // Navigate back to the sign-in page
       navigate('/login');

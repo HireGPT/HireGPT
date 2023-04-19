@@ -13,4 +13,6 @@ export default defineConfig({
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
+  
 });
+console.log('Using Vite configuration...');

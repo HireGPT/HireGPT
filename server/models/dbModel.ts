@@ -21,7 +21,7 @@ const pool = new Pool({
 
 export const db = {
   query: (text: string, params: any[]): Promise<QueryResult> => {
-    console.log(`This is the text: ${text} and this is the params: ${params}`);
+    // console.log(`This is the text: ${text} and this is the params: ${params}`);
     return pool.query(text, params);
   },
 };
