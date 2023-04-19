@@ -1,3 +1,5 @@
+import { SessionData } from "express-session";
+
 // Error type
 export type ServerError = {
   log: string;
@@ -6,3 +8,10 @@ export type ServerError = {
     err: string;
   };
 };
+
+
+declare module 'express-session' {
+  export interface SessionData {
+    email: string;
+  }
+}
