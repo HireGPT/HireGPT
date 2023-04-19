@@ -51,6 +51,8 @@ const Conversation: React.FC = () => {
     },
   ];
 
+  // const data = await fetch('/api/chat', {message: });
+
   const chatContent = [];
   for (let msg of sampleData) {
     chatContent.push(<div className={msg.sender}>{msg.message}</div>);
@@ -81,9 +83,17 @@ const ChatContainer: React.FC = () => {
 
 const ChatPage: React.FC = () => {
   const navigate = useNavigate();
+  const [conversationData, setConversationData] = useState([]);
 
   const handleChangePersonClick = () => {
     navigate('/');
+  };
+
+  const handleStartInterviewClick = async () => {
+    // const data = await fetch ('/api/chat',
+    // method: 'POST',
+    // headers: { 'Content-Type': 'application/json' },
+    // body: JSON.stringify( )
   };
 
   return (
@@ -100,7 +110,9 @@ const ChatPage: React.FC = () => {
             >
               {'Change Personality'}
             </button>
-            <button>{'Start Interview'}</button>
+            <button onClick={handleStartInterviewClick}>
+              {'Start Interview'}
+            </button>
           </div>
         </div>
         <ChatContainer />
