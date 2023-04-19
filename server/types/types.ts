@@ -15,3 +15,12 @@ declare module 'express-session' {
     email: string;
   }
 }
+
+
+export interface PersonProps {
+  name: string;
+  traits: string;
+  role: string;
+  expertise: string;
+  company: string;
+}

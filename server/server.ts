@@ -1,21 +1,26 @@
 import express, { Request, Response, NextFunction } from 'express';
-import { ServerError } from '../types';
+import { ServerError } from './types/types'
 import session from 'express-session';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import * as path from 'path';
 import router from './routes/api';
-dotenv.config();
+
+
 const app = express();
 const PORT = 3000;
 const ONE_DAY = 1000 * 60 * 60 * 24;
 
+dotenv.config();
+
 app.use(express.json());
+
 app.use(
   express.urlencoded({
     extended: true,
   })
 );
+
 app.use(
   session({
     secret: process.env.SECRET!,
@@ -25,11 +30,17 @@ app.use(
     cookie: {
       secure: false,
       maxAge: ONE_DAY,
+      sameSite: 'lax'
     },
   })
 );
 
 app.use(cookieParser());
+
+app.use((req, res, next) => {
+  console.log(`Received request: ${req.method} ${req.path}`);
+  next();
+});
 
 app.use('/api', router);
 

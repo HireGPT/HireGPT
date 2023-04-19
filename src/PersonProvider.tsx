@@ -10,7 +10,7 @@ export const PersonProvider: React.FC<PersonProviderProps> = ({ children }) => {
   const [persons, setPersons] = useState<Array<PersonProps>>([]); // Add this line
 
   return (
-    <PersonContext.Provider value={{ person, setPerson, persons, setPersons }}> // Update the value prop
+    <PersonContext.Provider value={{ person, setPerson, persons, setPersons }}>
       {children}
     </PersonContext.Provider>
   );

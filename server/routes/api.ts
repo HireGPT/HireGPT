@@ -2,14 +2,16 @@ import express from 'express';
 import { Request, Response } from 'express';
 import sessionController from '../controllers/sessionController';
 import userController from '../controllers/userController';
+import chatController from '../controllers/openAIController'
 
 
 require('dotenv').config();
 
 const router = express.Router();
 
-router.post('/login', 
+router.post('/login',
     userController.verifyUser, 
+    sessionController.startSession,
     (req: Request, res: Response): Response => {
     return res.status(200).json(res.locals.users);
     });
@@ -17,6 +19,7 @@ router.post('/login',
 router.post(
   '/signup',
   userController.signUp,
+  sessionController.startSession,
   (req: Request, res: Response): Response => {
     return res.status(200).json();
   }
@@ -29,5 +32,8 @@ router.post('/logout', sessionController.endSession, (req, res) => {
 router.get('/loggedIn', sessionController.isLoggedIn, (req, res) => {
   res.json({ message: 'you are logged in' })
 })
+
+router.post('/chat', chatController)
+
 
 export default router;
