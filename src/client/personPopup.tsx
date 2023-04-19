@@ -3,6 +3,7 @@ import React from 'react';
 import { PersonProps } from '../PersonContext';
 import { useNavigate } from 'react-router-dom';
 import './personPopup.scss';
+import axios from 'axios';
 
 interface PersonPopupProps {
   person: PersonProps | null;
@@ -14,8 +15,14 @@ const PersonPopup: React.FC<PersonPopupProps> = ({ person, onClose }) => {
 
   if (!person) return null;
 
-  const handleStartButtonClick = () => {
-    navigate('/chat');
+  const handleStartButtonClick = async () => {
+    try {
+      console.log(person);
+      await axios.post('/api/initialMessage', { person }); // Make the API call
+      navigate('/chat'); // Navigate to /chat after the API call is completed
+    } catch (error) {
+      console.error('Error submitting person:', error);
+    }
   };
 
   return (
