@@ -49,22 +49,24 @@ const HomePage: React.FC = () => {
     <>
       <Navbar />
       <div className="main-container">
-        <div>
-          <div className="instructions-panel">
-            <h1>Instructions</h1>
-            <p>Click on a personality to start an interview</p>
-          </div>
-          <div id="recent-history">
-            <h1>Recent History</h1>
-          </div>
-          <div id="persons">
-            <h1>Personalities</h1>
+        <div className="instructions-panel">
+          <h1>Instructions</h1>
+          <p>Click on a personality to start an interview</p>
+        </div>
+        <div className="recent-history">
+          <h1>Recent History</h1>
+        </div>
+        <div className="personality-container">
+          <h1>Personalities</h1>
+          <div className="personalities">
             {persons.map((person, index) => (
-              <Person
-                key={index}
-                {...person}
-                onClick={() => handlePersonClick(person)}
-              />
+              <div className="personality">
+                <Person
+                  key={index}
+                  {...person}
+                  onClick={() => handlePersonClick(person)}
+                />
+              </div>
             ))}
           </div>
           <PersonPopup

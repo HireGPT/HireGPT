@@ -94,7 +94,10 @@ const ChatPage: React.FC = () => {
           {/* <Person /> */}
           <div>{'person'}</div>
           <div className="personality-buttons">
-            <button onClick={handleChangePersonClick}>
+            <button
+              className="button-deemphasize"
+              onClick={handleChangePersonClick}
+            >
               {'Change Personality'}
             </button>
             <button>{'Start Interview'}</button>

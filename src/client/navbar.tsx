@@ -27,7 +27,10 @@ const Navbar: React.FC = () => {
       <div className="navbar-logo" onClick={handleLogoClick}>
         <img src={logo} alt="Logo" />
       </div>
-      <button className="navbar-logout" onClick={handleLogout}>
+      <button
+        className="navbar-logout button-deemphasize"
+        onClick={handleLogout}
+      >
         Log Out
       </button>
     </header>
