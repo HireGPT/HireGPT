@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Container, TextField, Button, Box, Typography } from '@mui/material';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -19,31 +20,67 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email Address</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-      <div>
-        <button type="submit">Sign Up</button>
-        <button onClick={() => navigate('/login')}>Login</button>
-      </div>
-      </form>
-    </div>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+      }}
+    >
+      <Container maxWidth="xs">
+        <Typography component="h1" variant="h5">
+          Sign Up
+        </Typography>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          sx={{ mt: 1, width: '100%' }}
+        >
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="password"
+            label="Password"
+            name="password"
+            type="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+          <Box sx={{ mt: 2 }}>
+            <Button type="submit" fullWidth variant="contained" color="primary">
+              Sign Up
+            </Button>
+          </Box>
+          <Box sx={{ mt: 1 }}>
+            <Button
+              fullWidth
+              variant="text"
+              color="primary"
+              onClick={() => navigate('/login')}
+            >
+              Already have an account?
+            </Button>
+          </Box>
+        </Box>
+      </Container>
+    </Box>
   );
 };
 

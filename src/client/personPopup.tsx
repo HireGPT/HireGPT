@@ -17,8 +17,8 @@ const PersonPopup: React.FC<PersonPopupProps> = ({ person, onClose }) => {
 
   const handleStartButtonClick = async () => {
     try {
-      console.log(person);
-      await axios.post('/api/initialMessage', { person }); // Make the API call
+      // console.log(person);
+      // await axios.post('/api/initialMessage', { person }); // Make the API call
       navigate('/chat'); // Navigate to /chat after the API call is completed
     } catch (error) {
       console.error('Error submitting person:', error);
@@ -35,7 +35,7 @@ const PersonPopup: React.FC<PersonPopupProps> = ({ person, onClose }) => {
         <p>Company: {person.company}</p>
         <div className="popup-buttons">
           <button onClick={handleStartButtonClick}>Start</button>
-          <button className=" button-deemphasize" onClick={onClose}>
+          <button className="button-deemphasize" onClick={onClose}>
             Close
           </button>
         </div>
