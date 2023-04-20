@@ -50,6 +50,8 @@ const chatController: ChatController = {
         return res.status(400).json({ error: 'Messages are required' });
       }
 
+      console.log('messages', messages);
+
       const response = await openai.createChatCompletion({
         model: model,
         messages: messages,
@@ -58,7 +60,7 @@ const chatController: ChatController = {
         temperature: 0.8,
       });
 
-      // console.log(response);
+      console.log(response);
 
       const reply =
         response.data.choices && response.data.choices.length > 0
@@ -73,6 +75,9 @@ const chatController: ChatController = {
           content: reply,
         },
       ];
+
+      console.log('intended response', { messages: updatedMessages });
+
       res.json({ messages: updatedMessages });
     } catch (error) {
       console.error(error);
